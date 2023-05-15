@@ -1,5 +1,6 @@
 import express, { Application, NextFunction, Request, Response } from 'express';
 import cors from 'cors';
+import { Schema } from 'mongoose';
 
 
 
@@ -31,7 +32,7 @@ app.get('/', (req : Request, res : Response, next: NextFunction) => {
         password: string;
         name: {
             firstName: string;
-            middleName: string;
+            middleName?: string;
             lastName: string
         };
         dateOfBirth?: string;
@@ -41,6 +42,66 @@ app.get('/', (req : Request, res : Response, next: NextFunction) => {
         emergencyContact: string;
         presentAddress: string
     }
+
+    // Creating User Schema using Inteface
+
+    const userSchema = new Schema<IUser>({
+        id: {
+            type: String,
+            required: true,
+            unique: true
+        },
+        role: {
+            type: String,
+            required: true
+        },
+        password: {
+            type: String,
+            required: true,
+        },
+        name: {
+            firstName: {
+                type: String,
+                required: true
+
+            },
+            middleName: {
+                type: String,
+                required: false
+            },
+            lastName: {
+                type: String,
+                required: true
+            }
+        },
+        dateOfBirth: {
+            type: String,
+            required: false
+        },
+        gender: {
+            type: String,
+            enum: ['Male', 'Female'],
+            required: true,
+
+        },
+        email: {
+            type: String,
+            required: false
+        },
+        contactNo: {
+            type: String,
+            required: true
+        },
+        emergencyContact: {
+            type: String,
+            required: true
+        },
+        presentAddress: {
+            type: String,
+            required: true
+        }
+    })
+
     
     
     // res.send('Hello Next Level Coders!')
