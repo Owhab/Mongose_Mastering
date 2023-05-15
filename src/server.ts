@@ -1,17 +1,9 @@
-import express from 'express';
 import mongoose from 'mongoose';
-import cors from 'cors';
+import app from './app'
 
 
 
-const app = express()
 const port = 3000
-
-app.get('/', (req, res) => {
-  res.send('Hello Next Level Developers!')
-
-})
-
 
 async function main() {
     try{
@@ -28,7 +20,4 @@ async function main() {
   
   }
 
-
-
-main()
-app.use(cors());
+main();
