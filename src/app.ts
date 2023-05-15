@@ -1,6 +1,6 @@
 import express, { Application, NextFunction, Request, Response } from 'express';
 import cors from 'cors';
-import { Schema } from 'mongoose';
+import { Schema, model } from 'mongoose';
 
 
 
@@ -19,8 +19,8 @@ app.get('/', (req : Request, res : Response, next: NextFunction) => {
     
     /*
     Steps to Inserting data to mongodp
-    Step- 1: Interface
-    Step- 2: Schema
+    Step- 1: Interface - Done
+    Step- 2: Schema - Done
     Step- 3: Model
     Step- 4: Database Query
     */
@@ -101,6 +101,11 @@ app.get('/', (req : Request, res : Response, next: NextFunction) => {
             required: true
         }
     })
+
+    // Creating user Model
+
+    const User = model<IUser>('User', userSchema);
+    
 
     
     
