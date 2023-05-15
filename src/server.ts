@@ -3,7 +3,7 @@ import app from './app'
 
 
 
-const port = 3000
+const port : number = 3000
 
 async function main() {
     try{
