@@ -25,23 +25,7 @@ app.get('/', (req : Request, res : Response, next: NextFunction) => {
     Step- 4: Database Query
     */
 
-    // Creating an Interface
-    interface IUser{
-        id: string;
-        role: "student";
-        password: string;
-        name: {
-            firstName: string;
-            middleName?: string;
-            lastName: string
-        };
-        dateOfBirth?: string;
-        gender: "Male" | "Female";
-        email?: string;
-        contactNo: string;
-        emergencyContact: string;
-        presentAddress: string
-    }
+    
 
     // Creating User Schema using Inteface
 
@@ -108,25 +92,28 @@ app.get('/', (req : Request, res : Response, next: NextFunction) => {
 
     const createUser =async () => {
         const user1 = new User({
-            id: '01',
+            id: '02',
             role: 'student',
-            password: 'uehfc9w9',
+            password: 'jheubci',
             name: {
-                firstName: "Abdul",
-                lastName: "Owhab"
+                firstName: "Md",
+                lastName: "Shakil"
             },
-            dateOfBirth: "15 November 1998",
+            dateOfBirth: "15 November 2000",
             gender: "Male",
-            email: 'owhab@coder71.com',
-            contactNo: "01771176606",
-            emergencyContact: "01886644811",
+            email: 'shakil@coder71.com',
+            contactNo: "837238478",
+            emergencyContact: "7348723",
             presentAddress: "Mirpur - 2, Dhaka"
         })
     
-        await user1.save()
+        await user1.save();
+        console.log(user1)
     
         
     }
+
+    createUser();
 
     
     
