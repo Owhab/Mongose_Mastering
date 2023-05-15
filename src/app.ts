@@ -106,22 +106,29 @@ app.get('/', (req : Request, res : Response, next: NextFunction) => {
 
     const User = model<IUser>('User', userSchema);
 
-    const user1 = new User({
-        id: '01',
-        role: 'student',
-        password: 'uehfc9w9',
-        name: {
-            firstName: "Abdul",
-            lastName: "Owhab"
-        },
-        dateOfBirth: "15 November 1998",
-        gender: "Male",
-        email: 'owhab@coder71.com',
-        contactNo: "01771176606",
-        emergencyContact: "01886644811",
-        presentAddress: "Mirpur - 2, Dhaka"
-    })
+    const createUser =async () => {
+        const user1 = new User({
+            id: '01',
+            role: 'student',
+            password: 'uehfc9w9',
+            name: {
+                firstName: "Abdul",
+                lastName: "Owhab"
+            },
+            dateOfBirth: "15 November 1998",
+            gender: "Male",
+            email: 'owhab@coder71.com',
+            contactNo: "01771176606",
+            emergencyContact: "01886644811",
+            presentAddress: "Mirpur - 2, Dhaka"
+        })
+    
+        await user1.save()
+    
+        
+    }
 
+    
     
     
     // res.send('Hello Next Level Coders!')
