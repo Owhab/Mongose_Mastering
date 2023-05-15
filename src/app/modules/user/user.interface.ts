@@ -16,4 +16,4 @@ interface IUser{
     presentAddress: string
 }
 
-export default interface;
+export default IUser;
