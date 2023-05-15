@@ -1,5 +1,7 @@
-const express = require('express')
-const mongoose = require('mongoose');
+import express from 'express';
+import mongoose from 'mongoose';
+import cors from 'cors';
+
 
 
 const app = express()
@@ -15,6 +17,10 @@ async function main() {
     try{
         await mongoose.connect('mongodb://127.0.0.1:27017/test');
         console.log("Successfully Connected to the database")
+        // Listening server after connecting to the database
+        app.listen(port, () => {
+            console.log(`Example app listening on port ${port}`)
+        })
     }
     catch(err){
         console.log("Failed to connect to the database", err);
@@ -22,8 +28,7 @@ async function main() {
   
   }
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+
 
 main()
+app.use(cors());
