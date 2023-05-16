@@ -65,4 +65,4 @@ import IUser from "./user.interface";
 
     const User = model<IUser>('User', userSchema);
 
-    export default userSchema;
+    export default User;
