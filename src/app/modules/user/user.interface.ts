@@ -1,3 +1,5 @@
+import { Model } from "mongoose";
+
 // Creating an Interface
 export interface IUser{
     id: string;
@@ -16,8 +18,14 @@ export interface IUser{
     presentAddress: string
 }
 
+// Statics 
+interface UserModel extends Model<IUser> {
+    getAdminUsers(): IUser[];
+  }
 
-// Put all user instance methods in this interface:
+
+
+// Instance Method
 export interface IUserMethods {
     fullName(): string;
   }
