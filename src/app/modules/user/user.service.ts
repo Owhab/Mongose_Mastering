@@ -1,12 +1,16 @@
-import IUser from "./user.interface";
+
+import { IUser } from "./user.interface";
 import User from "./user.model";
 
 export const createUsersToDB =async (payload: IUser): Promise<IUser> =>{
     const user1 = await new User(payload)
 
     await user1.save();
+    user1.fullName();
     console.log(user1)
+    console.log(user1.fullName())
     return user1;
+
 
     
 }
