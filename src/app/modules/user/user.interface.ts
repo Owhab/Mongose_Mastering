@@ -1,4 +1,4 @@
-import { Model } from "mongoose";
+import { HydratedDocument, Model } from "mongoose";
 
 // Creating an Interface
 export interface IUser{
@@ -18,15 +18,15 @@ export interface IUser{
     presentAddress: string
 }
 
-// Statics 
-interface UserModel extends Model<IUser> {
-    getAdminUsers(): IUser[];
-  }
-
 
 
 // Instance Method
 export interface IUserMethods {
     fullName(): string;
+  }
+
+
+export interface UserModel extends Model<IUser, {}, IUserMethods> {
+    getAdminUsers(): Promise<HydratedDocument<IUser, IUserMethods>>;
   }
      

@@ -2,12 +2,12 @@
     // Creating User Schema using Inteface
 
 import { Model, Schema, model } from "mongoose";
-import {IUser, IUserMethods} from "./user.interface";
+import {IUser, IUserMethods, UserModel} from "./user.interface";
 
 // Create a new Model type that knows about IUserMethods...
-type UserModel = Model<IUser, UserModel, IUserMethods>;
+// type UserModel = Model<IUser, UserModel, IUserMethods>;
 
-    const userSchema = new Schema<IUser>({
+    const userSchema = new Schema<IUser, UserModel, IUserMethods>({
         id: {
             type: String,
             required: true,
@@ -62,6 +62,11 @@ type UserModel = Model<IUser, UserModel, IUserMethods>;
             type: String,
             required: true
         }
+    })
+
+
+    userSchema.static("getAdminUsers", async function getAdminUsers(){
+        const admins = await this.find({role: 'admin'})
     })
 
     // Creating user Model

@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { createUsersToDB, getUserByIdFromDB, getUsersFromDB } from "./user.service";
+import { createUsersToDB, getAdminUsersFromDB, getUserByIdFromDB, getUsersFromDB } from "./user.service";
 
 
 // Post user data to mongodb
@@ -48,3 +48,15 @@ export const getUserById =async (req:Request, res: Response, next: NextFunction)
 // Patthern
 
 // Route -> Controller -> Service
+
+export const getAdminUsers =async (req:Request, res: Response, next: NextFunction) => {
+
+
+    const user = await getAdminUsersFromDB();
+
+    res.status(200).json({
+        status: 'success',
+        data: user,
+    })
+    
+}
