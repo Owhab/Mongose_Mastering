@@ -8,3 +8,10 @@ db.practice.aggregate([
 ])
 
 ```
+
+- Projecting a query in aggregate pipeline
+```
+db.practice.aggregate([
+  {$match: {gender:'Female', age: 24}}
+  ])
+```
