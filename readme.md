@@ -15,3 +15,10 @@ db.practice.aggregate([
   {$match: {gender:'Female', age: 24}}
   ])
 ```
+### Add Fields with Value
+- Adding fields to the collection with value using $addFields
+```
+db.practice.aggregate([
+  { $addFields: {Salary: 6000}}
+  ])
+```
