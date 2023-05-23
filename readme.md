@@ -22,3 +22,11 @@ db.practice.aggregate([
   { $addFields: {Salary: 6000}}
   ])
 ```
+- Adding Fields with value with Matched items
+```
+db.practice.aggregate([
+  { $match: { gender: "Male"}},
+  { $addFields: {Salary: 50000}},
+  { $project: {gender: 1, Salary: 1}}
+  ])
+```
