@@ -90,3 +90,12 @@ db.practice.aggregate([
 ```
 This will add the Salary field to the matched items.
 
+- Finding Unique values using $group
+```
+db.practice.aggregate([
+  {
+      $group: { _id: "$gender"}
+  }
+  ])
+  
+```
