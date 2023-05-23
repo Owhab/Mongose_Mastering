@@ -30,3 +30,22 @@ db.practice.aggregate([
   { $project: {gender: 1, Salary: 1}}
   ])
 ```
+
+- Adding Random Value as Salary in the field
+```
+db.practice.aggregate([
+  { $match: { gender: "Male"}},
+  { $addFields: {Salary: {
+    $toInt: {
+      $floor: {
+        $multiply: [
+          {$rand: {}}, 10000
+          ]
+        
+      }
+    }
+  }}},
+  { $project: {gender: 1, Salary: 1}}
+  ])
+
+```
