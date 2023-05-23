@@ -111,3 +111,18 @@ db.practice.aggregate([
   }
   ])
 ```
+- Finding maximum value and sum using $max and $sum
+```
+db.practice.aggregate([
+    {
+        $group: { _id: 'null', 
+        totalSalary: { $sum: '$Salary' },
+        maxSalary: {$max: '$Salary'}
+            
+        }
+    },
+    {
+        $sort: { _id: 1 }
+    }
+])
+```
