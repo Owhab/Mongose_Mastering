@@ -126,3 +126,41 @@ db.practice.aggregate([
     }
 ])
 ```
+
+### Working with $facet for SubPipeline in MongoDB Aggregation
+```
+db.practice.aggregate([
+    {
+        $match: {_id: ObjectId('6406ad63fc13ae5a40000067')}
+    },
+    {
+        $facet: {
+            "FriendsCount": [
+                // Stage
+                {
+                    $project: {friendsCount: {
+                        $size: "$friends"
+                    }}
+                }
+                ],
+            "InterestCount": [
+                // Stage
+                {
+                    $project: {interestsCount: {
+                        $size: "$interests"
+                    }}
+                }
+                ],
+            "SkillsCount": [
+                // Stage
+                {
+                    $project: {skillsCount: {
+                        $size: "$skills"
+                    }}
+                }
+                ]           
+        }
+    }
+    ])
+
+```
