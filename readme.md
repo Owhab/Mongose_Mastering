@@ -49,3 +49,44 @@ db.practice.aggregate([
   ])
 
 ```
+- The $addFields will not modify the original collection. For this to add the salary field to the collection we have to use $out to add the Salary Field in a new collection with the existing fields.
+```
+db.practice.aggregate([
+  { $match: { gender: "Male"}},
+  { $addFields: {Salary: {
+    $toInt: {
+      $floor: {
+        $multiply: [
+          {$rand: {}}, 10000
+          ]
+        
+      }
+    }
+  }}},
+  {$out: "SalaryPractice"}
+  ])
+
+```
+
+Here $out will create a new collection with the name of SalaryPractice. It is to be noted that the $out operator has to be the last of the aggregation pipeline. 
+
+- To add the Salary field in the existing collection we have to use $merge operator. Here is the example
+```
+db.practice.aggregate([
+  { $match: { gender: "Male"}},
+  { $addFields: {Salary: {
+    $toInt: {
+      $floor: {
+        $multiply: [
+          {$rand: {}}, 10000
+          ]
+        
+      }
+    }
+  }}},
+  {$merge: "practice"}
+  ])
+
+```
+This will add the Salary field to the matched items.
+
