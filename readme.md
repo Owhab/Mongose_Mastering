@@ -97,5 +97,17 @@ db.practice.aggregate([
       $group: { _id: "$gender"}
   }
   ])
-  
+
+```
+Filtering unique values using $group with multiple fields
+```
+db.practice.aggregate([
+  {
+      $group: { _id: {
+          age: '$age',
+          gender: '$gender',
+          occupation: '$occupation'
+      }}
+  }
+  ])
 ```
